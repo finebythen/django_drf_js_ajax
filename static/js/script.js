@@ -447,4 +447,4 @@ document.addEventListener('DOMContentLoaded', e => {
             update_id_car = null;
         }
     });
-});1
+});
