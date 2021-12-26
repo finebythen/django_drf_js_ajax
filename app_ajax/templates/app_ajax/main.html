@@ -1,0 +1,118 @@
+{% extends 'app_ajax/base.html' %}
+{% load static %}
+
+{% block link %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+{% endblock link %}
+
+{% block title %}
+    DRF | JS Ajax
+{% endblock title %}
+
+{% block body %}
+    <!-- Modals -->
+    <div class="modal fade" id="manufacturerModal" tabindex="-1" aria-labelledby="manufacturerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="manufacturerModalLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="form-update-manufacturer">
+                        <input type="text" id="input-update-manufacturer-name" autocomplete="off" required>
+                        <input type="number" id="input-update-manufacturer-year" min="1900" max="2022" required>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schliessen</button>
+                    <button type="button" class="btn btn-primary" id="btn-update-manufacturer">Aktualisieren</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="carModal" tabindex="-1" aria-labelledby="carModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="carModalLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="form-update-car">
+                        <input type="text" id="input-update-car-name" autocomplete="off" required>
+                        <select name="select-update-car-manufacturer" id="select-update-car-manufacturer"></select>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schliessen</button>
+                    <button type="button" class="btn btn-primary" id="btn-update-car">Aktualisieren</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="card card-manufacturer">
+            <div class="card-header">
+                <h6>Manufacturer</h6>
+            </div>
+            <div class="card-body">
+                <table class="table table-hover table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Founding Year</th>
+                            <th scope="col">Update</th>
+                            <th scope="col">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblbody-manufacturer"></tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <form id="form-create-manufacturer">
+                    <input type="text" id="manufacturer-name" placeholder="Name..." autocomplete="off" required>
+                    <input type="number" id="manufacturer-year" min="1900" max="2022" value="1900" required>
+                    <button class="btn btn-success btn-sm" id="btn-create-manufacturer" type="submit">
+                        <i class="bi bi-plus-circle"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="card card-car">
+            <div class="card-header">
+                <h6>Car</h6>
+            </div>
+            <div class="card-body">
+                <table class="table table-hover table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Manufacturer</th>
+                            <th scope="col">Update</th>
+                            <th scope="col">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblbody-car"></tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <form id="form-create-car">
+                    <input type="text" id="car-name" placeholder="Name..." autocomplete="off" required>
+                    <select name="select-car-manufacturer" id="select-car-manufacturer"></select>
+                    <button class="btn btn-success btn-sm" id="btn-create-car" type="submit">
+                        <i class="bi bi-plus-circle"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock body %}
+
+{% block script %}
+    <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+{% endblock script %}
